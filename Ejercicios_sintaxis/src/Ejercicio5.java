@@ -17,12 +17,5 @@ public class Ejercicio5 {
         System.out.println("El peso de las muñecas es de: " + pesomu + " g");
         System.out.println("El peso de los payasos es de: " + pesopa + " g");
         System.out.println("El peso total es de: " + suma + " g");
-
-
-
-
-
-
-
     }
 }
