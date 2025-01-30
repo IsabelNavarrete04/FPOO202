@@ -5,13 +5,5 @@ public class Ejercicio4 {
         System.out.println("Escribe tu nombre: ");
         String nombre = scn.nextLine();
         System.out.println(nombre.toUpperCase() + " tiene "+ nombre.length()+ " letras ");
-
-
-
-
-
-
-
-
     }
 }
