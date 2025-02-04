@@ -30,7 +30,7 @@ public class Calculadora {
                         break;
                     default:
                         System.out.println("Operador no valido");
-                        break
+                        break;
           }
     }
 }

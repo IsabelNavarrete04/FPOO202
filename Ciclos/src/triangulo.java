@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class triangulo{
     public static void main(String[] args){
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Introduce un número entero positivo:");
+        System.out.println("Introduce un numero entero positivo:");
         int altura= scanner.nextInt();
         int i;
         int j;
