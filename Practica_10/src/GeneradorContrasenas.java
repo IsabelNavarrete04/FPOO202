@@ -1,45 +1,68 @@
 public class GeneradorContrasenas{
-   public String generarContrasena (int longitud,  boolean mayusculas,  boolean especiales){
-        String letras = "abcdefghijklmnopqrstuvwxyz";
-        String numeros = "0123456789";
-        String simbolos = "!@#$%^&*()";
+    private String letras = "abcdefghijklmnopqrstuvwxyz";
+    private String numeros = "0123456789";
+    private String simbolos = "!@#$%^&*()";
 
+    public String generarContrasena(int longitud, boolean mayusculas, boolean especiales){
         String caracteres = letras + numeros;
-        if (mayusculas){
+        if(mayusculas){
             caracteres += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         }
-        if (especiales){
+        if(especiales){
             caracteres += simbolos;
         }
-        String contrasena = "";
-        for (int i = 0; i < longitud; i++){
+        StringBuilder contrasena = new StringBuilder();
+        for(int i = 0; i < longitud; i++){
             int car = (int) (Math.random() * caracteres.length());
-            contrasena += caracteres.substring(car, car + 1);
+            contrasena.append(caracteres.charAt(car));
         }
-        return contrasena;
+        return contrasena.toString();
     }
+
     public String comprobarFortaleza(String contrasena){
         boolean Tmayuscula = false;
         boolean Tespecial = false;
-        String simbolos = "!@#$%^&*()";
 
-        for (int i = 0; i < contrasena.length(); i++) {
-            char c = contrasena.substring(i, i + 1).charAt(0);
+        for(int i = 0; i < contrasena.length(); i++){
+            char c = contrasena.charAt(i);
 
-            if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".contains(c + "")) {
+            if (Character.isUpperCase(c)) {
                 Tmayuscula = true;
             }
-            if (simbolos.contains(c + "")) {
+            if (simbolos.contains(String.valueOf(c))){
                 Tespecial = true;
             }
         }
 
-        if (contrasena.length() >= 12 && Tmayuscula && Tespecial) {
+        if(contrasena.length() >= 12 && Tmayuscula && Tespecial){
             return "Fuerte";
-        }else if (contrasena.length() >= 8) {
+        }else if(contrasena.length() >= 8){
             return "Moderada";
-        }else {
-            return "Débil";
+        }else{
+            return "Debil";
         }
-   }
+    }
+    public String getLetras(){
+        return letras;
+    }
+
+    public void setLetras(String letras){
+        this.letras = letras;
+    }
+
+    public String getNumeros(){
+        return numeros;
+    }
+
+    public void setNumeros(String numeros){
+        this.numeros = numeros;
+    }
+
+    public String getSimbolos(){
+        return simbolos;
+    }
+
+    public void setSimbolos(String simbolos){
+        this.simbolos = simbolos;
+    }
 }//llave de la clase
