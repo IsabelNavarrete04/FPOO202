@@ -3,6 +3,13 @@ public class GeneradorContrasenas{
     private String numeros = "0123456789";
     private String simbolos = "!@#$%^&*()";
 
+    //constructor
+    public GeneradorContrasenas(){
+        this.letras = "abcdefghijklmnopqrstuvwxyz";
+        this.numeros = "0123456789";
+        this.simbolos = "!@#$%^&*()";
+    }
+
     public String generarContrasena(int longitud, boolean mayusculas, boolean especiales){
         String caracteres = letras + numeros;
         if(mayusculas){
