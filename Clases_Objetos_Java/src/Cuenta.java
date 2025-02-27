@@ -1,25 +1,21 @@
 import javax.swing.JOptionPane;
 public class Cuenta {
-    public int Nocuenta;
-    public String Titular;
-    public int Edad;
-    public double Saldo;
+    private int noCuenta;
+    private String titular;
+    private int edad;
+    private double saldo;
 
-    public double Saldo() {
-        return Saldo;
-    }
-
-    public void Ingresar(double montos) {
-        if(montos > 0) {
-            Saldo += montos;
-        } else {
+    public void ingresar(double monto){
+        if (monto > 0) {
+            saldo += monto;
+        } else{
             JOptionPane.showMessageDialog(null, "El monto debe ser positivo");
         }
     }
 
-    public boolean Retirar(double montos) {
-        if (montos > 0 && Saldo >= montos) {
-            Saldo -= montos;
+    public boolean retirar(double monto) {
+        if(monto > 0 && saldo >= monto){
+            saldo -= monto;
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "Fondos insuficientes o monto inválido");
@@ -27,14 +23,42 @@ public class Cuenta {
         }
     }
 
-    public boolean DepositarOtraCuenta(Cuenta otraCuenta, double montos) {
-        if(montos > 0 && Saldo >= montos) {
-            Saldo -= montos;
-            otraCuenta.Ingresar(montos);
+    public boolean depositarOtraCuenta(Cuenta otraCuenta, double monto){
+        if(monto > 0 && saldo >= monto){
+            saldo -= monto;
+            otraCuenta.ingresar(monto);
             return true;
-        }else {
+        } else{
             JOptionPane.showMessageDialog(null, "Fondos insuficientes o monto inválido");
             return false;
         }
+    }
+    //gets & sets
+    public int getNoCuenta(){
+        return noCuenta;
+    }
+
+    public void setNoCuenta(int noCuenta){
+        this.noCuenta = noCuenta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public double getSaldo() {
+        return saldo;
     }
 }//llave de la clase

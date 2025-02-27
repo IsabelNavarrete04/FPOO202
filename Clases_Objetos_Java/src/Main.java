@@ -1,14 +1,13 @@
 import javax.swing.JOptionPane;
-public class Main{
-    public static void main(String[] args){
+public class Main {
+    public static void main(String[] args) {
         Cuenta cuenta1 = new Cuenta();
-        cuenta1.Nocuenta = 12345;
-        cuenta1.Titular = "Isabel Navarrete";
-        cuenta1.Edad = 19;
-        cuenta1.Saldo = 1000.0;
+        cuenta1.setNoCuenta(12345);
+        cuenta1.setTitular("Isabel Navarrete");
+        cuenta1.setEdad(19);
 
         int opcion;
-        do {
+        do{
             String input = JOptionPane.showInputDialog(
                     "Menú de operaciones:\n" +
                             "1. Consultar saldo\n" +
@@ -22,22 +21,22 @@ public class Main{
 
             switch (opcion) {
                 case 1:
-                    JOptionPane.showMessageDialog(null, "Saldo actual: " + cuenta1.Saldo());
+                    JOptionPane.showMessageDialog(null, "Saldo actual: " + cuenta1.getSaldo());
                     break;
 
                 case 2:
                     String montoIngresarStr = JOptionPane.showInputDialog("Ingrese el monto a ingresar:");
                     double montoIngresar = Double.parseDouble(montoIngresarStr);
-                    cuenta1.Ingresar(montoIngresar);
-                    JOptionPane.showMessageDialog(null, "Saldo actualizado: " + cuenta1.Saldo());
+                    cuenta1.ingresar(montoIngresar);
+                    JOptionPane.showMessageDialog(null, "Saldo actualizado: " + cuenta1.getSaldo());
                     break;
 
                 case 3:
                     String montoRetirarStr = JOptionPane.showInputDialog("Ingrese el monto a retirar:");
                     double montoRetirar = Double.parseDouble(montoRetirarStr);
-                    boolean retiroExitoso = cuenta1.Retirar(montoRetirar);
+                    boolean retiroExitoso = cuenta1.retirar(montoRetirar);
                     if (retiroExitoso) {
-                        JOptionPane.showMessageDialog(null, "Retiro exitoso. Saldo actualizado: " + cuenta1.Saldo());
+                        JOptionPane.showMessageDialog(null, "Retiro exitoso. Saldo actualizado: " + cuenta1.getSaldo());
                     } else {
                         JOptionPane.showMessageDialog(null, "Retiro fallido. Fondos insuficientes o monto inválido.");
                     }
@@ -47,17 +46,16 @@ public class Main{
                     String numeroOtraCuentaStr = JOptionPane.showInputDialog("Ingrese el número de la otra cuenta:");
                     int numeroOtraCuenta = Integer.parseInt(numeroOtraCuentaStr);
                     Cuenta otraCuenta = new Cuenta();
-                    otraCuenta.Nocuenta = numeroOtraCuenta;
-                    otraCuenta.Titular = "Karla Navarrete";
-                    otraCuenta.Edad = 25;
-                    otraCuenta.Saldo = 500.0;
+                    otraCuenta.setNoCuenta(numeroOtraCuenta);
+                    otraCuenta.setTitular("Karla Navarrete");
+                    otraCuenta.setEdad(25);
 
                     String montoDepositarStr = JOptionPane.showInputDialog("Ingrese el monto a depositar:");
                     double montoDepositar = Double.parseDouble(montoDepositarStr);
-                    boolean depositoExitoso = cuenta1.DepositarOtraCuenta(otraCuenta, montoDepositar);
+                    boolean depositoExitoso = cuenta1.depositarOtraCuenta(otraCuenta, montoDepositar);
                     if (depositoExitoso) {
-                        JOptionPane.showMessageDialog(null, "Depósito exitoso. Saldo cuenta1: " + cuenta1.Saldo());
-                        JOptionPane.showMessageDialog(null, "Saldo otra cuenta: " + otraCuenta.Saldo());
+                        JOptionPane.showMessageDialog(null, "Depósito exitoso. Saldo cuenta1: " + cuenta1.getSaldo());
+                        JOptionPane.showMessageDialog(null, "Saldo otra cuenta: " + otraCuenta.getSaldo());
                     } else {
                         JOptionPane.showMessageDialog(null, "Depósito fallido. Fondos insuficientes o monto inválido.");
                     }
