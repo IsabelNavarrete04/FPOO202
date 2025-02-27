@@ -1,10 +1,7 @@
 import javax.swing.JOptionPane;
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        Cuenta cuenta1 = new Cuenta();
-        cuenta1.setNoCuenta(12345);
-        cuenta1.setTitular("Isabel Navarrete");
-        cuenta1.setEdad(19);
+        Cuenta cuenta1 = new Cuenta(12345, "Isabel Navarrete", 19, 1000.0);
 
         int opcion;
         do{
@@ -19,7 +16,7 @@ public class Main {
             );
             opcion = Integer.parseInt(input);
 
-            switch (opcion) {
+            switch (opcion){
                 case 1:
                     JOptionPane.showMessageDialog(null, "Saldo actual: " + cuenta1.getSaldo());
                     break;
@@ -45,10 +42,7 @@ public class Main {
                 case 4:
                     String numeroOtraCuentaStr = JOptionPane.showInputDialog("Ingrese el número de la otra cuenta:");
                     int numeroOtraCuenta = Integer.parseInt(numeroOtraCuentaStr);
-                    Cuenta otraCuenta = new Cuenta();
-                    otraCuenta.setNoCuenta(numeroOtraCuenta);
-                    otraCuenta.setTitular("Karla Navarrete");
-                    otraCuenta.setEdad(25);
+                    Cuenta otraCuenta = new Cuenta(numeroOtraCuenta, "Karla Navarrete", 25, 500.0);
 
                     String montoDepositarStr = JOptionPane.showInputDialog("Ingrese el monto a depositar:");
                     double montoDepositar = Double.parseDouble(montoDepositarStr);
@@ -56,7 +50,7 @@ public class Main {
                     if (depositoExitoso) {
                         JOptionPane.showMessageDialog(null, "Depósito exitoso. Saldo cuenta1: " + cuenta1.getSaldo());
                         JOptionPane.showMessageDialog(null, "Saldo otra cuenta: " + otraCuenta.getSaldo());
-                    } else {
+                    }else{
                         JOptionPane.showMessageDialog(null, "Depósito fallido. Fondos insuficientes o monto inválido.");
                     }
                     break;
@@ -69,6 +63,6 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "Opción inválida. Intente de nuevo.");
                     break;
             }
-        } while (opcion != 5);
+        } while(opcion != 5);
     }
 }

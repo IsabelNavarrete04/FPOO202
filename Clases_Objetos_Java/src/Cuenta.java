@@ -5,6 +5,14 @@ public class Cuenta {
     private int edad;
     private double saldo;
 
+    //constructor
+    public Cuenta(int noCuenta, String titular, int edad, double saldoInicial){
+        this.noCuenta = noCuenta;
+        this.titular = titular;
+        this.edad = edad;
+        this.saldo = saldoInicial;
+    }
+
     public void ingresar(double monto){
         if (monto > 0) {
             saldo += monto;
