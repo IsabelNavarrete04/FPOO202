@@ -15,5 +15,4 @@ public class Empleado {
         System.out.println("Salario: " + salario);
 
     }
-
 }
