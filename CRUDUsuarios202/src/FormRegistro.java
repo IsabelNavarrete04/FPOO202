@@ -72,6 +72,11 @@ public class FormRegistro extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(153, 255, 153));
         btnLimpiar.setFont(new java.awt.Font("Cafe24 Dongdong", 0, 12)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Cafe24 Dongdong", 0, 12)); // NOI18N
         jLabel2.setText("Nombre");
@@ -147,9 +152,45 @@ public class FormRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        // 1. Obtener los valores de los txt
+        
+        String nombre = txtnombre.getText();
+        String correo = txtcorreo.getText();
+        String contrasena = txtcontrasena.getText();
+         
+        // 2. Validar que no envie vacios a BD
+        if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR);
+            return;
+        }
+        
+        //3. Ejecutamos el INSERT 
+        UserCRUD crud = new UserCRUD();
+        boolean status = crud.crearUsuario(nombre, correo, contrasena);
+        
+        //4. Notificamos status del insert
+        
+        if(status ){
+            
+            JOptionPane.showMessageDialog(this, "Usuario Guardado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "No se guardo", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
+        limpiarCampos();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+        private void limpiarCampos(){
+            txtnombre.setText("");
+            txtcorreo.setText("");
+            txtnombre.setText("");
+            txtcontrasena.setText("");
+
+}
     /**
      * @param args the command line arguments
      */
