@@ -10,6 +10,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 public class UserCRUD {
     
@@ -38,6 +39,43 @@ public class UserCRUD {
             return false;
         
         }
-    }
+    } // fin del insert
     
-}
+    public ResultSet obtenerUsuarioPorID(int id){
+        String selectSql ="SELECT * FROM usuarios where id = ?";
+        
+        try{
+           PreparedStatement ps = conexion.prepareStatement(selectSql);
+           ps.setInt(1, id);
+           return ps.executeQuery();
+        }
+        
+        catch(SQLException e){
+            System.out.print("Error al intentar consultar: "+ e.getMessage());
+            return null;
+        
+        }
+    
+    }// fin obtener usuario id
+    
+    public ResultSet obtenerTodos(){
+        String sqlTodos ="SELECT * FROM usuarios";
+        
+        try{
+        PreparedStatement ps = conexion.prepareStatement(sqlTodos);
+           return ps.executeQuery();
+        
+        }
+        catch(SQLException w){
+            System.out.println("Error al consultar" + w.getMessage());
+            return null;
+        
+        }
+    
+    
+    }
+
+    
+    
+    
+} 
